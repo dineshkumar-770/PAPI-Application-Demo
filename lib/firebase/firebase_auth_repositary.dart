@@ -46,8 +46,13 @@ class AuthWithFirebase {
   }
 
   Future<void> signOut(BuildContext context) async {
-    await _auth.signOut();
-    Navigator.popUntil(context, (route) => route.isFirst);
+    try {
+      await _auth.signOut();
+      Navigator.popUntil(context, (route) => route.isFirst);
+      ShowToast().showToast('Signed out sucessfull');
+    } on FirebaseAuthException catch (e) {
+      ShowToast().showToast('cannot signed out! error: $e');
+    }
   }
 }
 

@@ -3,10 +3,8 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_understanding/Views/screens/home_page.dart';
 import 'package:riverpod_understanding/Views/screens/register_screen.dart';
 import 'package:riverpod_understanding/firebase/firebase_auth_repositary.dart';
-import 'package:riverpod_understanding/firebase/firebase_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -86,6 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: () {
                             AuthWithFirebase().signIn(emailController.text,
                                 passwordController.text, context);
+                                emailController.clear();
+                              passwordController.clear();
                           },
                           child: const Text('login')),
                     ),

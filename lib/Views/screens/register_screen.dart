@@ -1,9 +1,7 @@
 import 'dart:developer';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_understanding/Views/molecule/flutter_toast.dart';
-import 'package:riverpod_understanding/Views/screens/login_screen.dart';
 import 'package:riverpod_understanding/firebase/firebase_auth_repositary.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -16,6 +14,7 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController cpasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +69,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         border: InputBorder.none, hintText: 'Create password'),
                   ),
                 ),
+                const SizedBox(
+                  height: 35,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(width: 2.5, color: Colors.white)),
+                  child: TextField(
+                    obscureText: true,
+                    textAlign: TextAlign.center,
+                    controller: cpasswordController,
+                    decoration: const InputDecoration(
+                        border: InputBorder.none, hintText: 'Confirm password'),
+                  ),
+                ),
                 const Divider(
                   color: Colors.transparent,
                   height: 50,
@@ -81,12 +95,27 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       style: ElevatedButton.styleFrom(
                           shape: const StadiumBorder()),
                       onPressed: () {
-                        AuthWithFirebase()
-                            .signUp(emailController.text,
-                                passwordController.text, context)
-                            .then((value) {
-                              ShowToast().showToast('DOne');
+                        if (emailController.text.isEmpty &&
+                            passwordController.text.isEmpty &&
+                            cpasswordController.text.isEmpty) {
+                          ShowToast().showToast('fields can\'t be empty');
+                        } else {
+                          if (passwordController.text !=
+                              cpasswordController.text) {
+                            ShowToast().showToast('password should match');
+                          } else {
+                            AuthWithFirebase()
+                                .signUp(emailController.text,
+                                    passwordController.text, context)
+                                .then((value) {
+                              ShowToast().showToast(
+                                  'Resigtration sucessfull! please login');
+                              emailController.clear();
+                              passwordController.clear();
+                              cpasswordController.clear();
                             });
+                          }
+                        }
                       },
                       child: const Text('Register')),
                 )

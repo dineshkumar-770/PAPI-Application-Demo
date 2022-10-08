@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_understanding/Views/screens/home_page.dart';
 import 'package:riverpod_understanding/Views/screens/login_screen.dart';
-import 'package:riverpod_understanding/Views/screens/on_boarding_screen.dart';
-import 'package:riverpod_understanding/firebase/authChecker.dart';
+import 'package:riverpod_understanding/firebase/database/db_screen.dart';
 import 'package:riverpod_understanding/firebase_options.dart';
 
 void main() async {
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: FirebaseAuth.instance.currentUser!=null?HomeScreen():const LoginScreen()
+      home: const FirebaseDatabaseScreen()//FirebaseAuth.instance.currentUser!=null?HomeScreen():const LoginScreen() 
     );
   }
 }
