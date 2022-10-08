@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "444424285604",
+    "project_id": "papi-app-4018d",
+    "storage_bucket": "papi-app-4018d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444424285604:android:c5e723887747b01ae4e531",
+        "android_client_info": {
+          "package_name": "com.example.riverpod_understanding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "444424285604-1l4q22gggc5m32fa59gtll0s3qifcesn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4Tp5rarsndWp5acXXcECgXiV0XRHf7LI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "444424285604-1l4q22gggc5m32fa59gtll0s3qifcesn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
